@@ -1,0 +1,27 @@
+package com.itheima;
+
+import java.util.Scanner;
+
+public class myScanner_3 {
+    public static void main(String[] args) {
+        int num_0;
+        int num_1;
+        int num_2;
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("请输入第一个数据: ");
+        num_0 = scan.nextInt();
+
+        System.out.println("请输入第二个数据: ");
+        num_1 = scan.nextInt();
+
+        System.out.println("请输入第三个数据: ");
+        num_2 = scan.nextInt();
+
+        int max;
+        max = (((num_0 > num_1) ? num_0 : num_1) > num_2) ? ((num_0 > num_1) ? num_0 : num_1) : num_2;
+        System.out.println(max);
+
+    }
+}
