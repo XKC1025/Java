@@ -2,7 +2,7 @@ package TicketThread;
 
 public class TicketThread implements Runnable {
     static boolean flag = true;
-    static int tickets = 10000;
+    static int tickets = 100;
     Object obj = new Object();
 
     private synchronized static void method() {
@@ -25,6 +25,7 @@ public class TicketThread implements Runnable {
         while (flag) {
 
                 method();
+                Thread.yield();
 
         }
 

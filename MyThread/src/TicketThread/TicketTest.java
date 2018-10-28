@@ -29,7 +29,7 @@ public class TicketTest {
         thread1.start();
         thread2.start();
         thread3.start();
-//        thread4.start();
+        thread4.start();
 
     }
 }
