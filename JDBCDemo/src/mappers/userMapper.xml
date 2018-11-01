@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--命名空间, 隔离sql, user.-->
+<mapper namespace="test">
+    <sql>
+
+    </sql>
+    <!--resultType  自动映射: 表和对象属性字段名都相同-->
+    <!--resultMap  手动映射: 表和对象属性字段名不都相同-->
+    <!--#{}: 占位符,自动加上单引号          ${value}: 必须使用value, 字符串拼接不自动加上单引号 "${}"-->
+    <select id="findUserById" parameterType="integer" resultType="com.itheima02.User">
+        select * from users where id = #{id}
+    </select>
+    <select id="findUserByUsername" parameterType="string" resultType="com.itheima02.User">
+        <!--防止SQL语句注入 "%"#{value}"%"  -->
+        select * from users where username Like '%${value}%'
+    </select>
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="com.itheima02.User">
+        <!--查询最新插入的id,   keyProperty的id就是user的id-->
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        <!--要与pojo对象属性一一对应取值-->
+        insert into users(username, birthday, address, sex) values (#{username}, #{birthday}, #{address}, #{sex})
+    </insert>
+</mapper>

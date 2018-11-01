@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--命名空间, 隔离sql, user.-->
+<mapper namespace="test">
+    <!--resultType  自动映射: 表和对象属性字段名都相同-->
+    <!--resultMap  手动映射: 表和对象属性字段名不都相同-->
+    <select id="findUserById" parameterType="integer" resultType="com.itheima02.User">
+        select * from users where id = #{id}
+    </select>
+</mapper>
